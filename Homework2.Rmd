@@ -14,3 +14,19 @@ print(sum_column(iris, "Species"))
 print(sum_column(warpbreaks, "breaks"))
 ```
 
+```{r}
+print(my_sum(iris$Sepal.Length))
+print(my_sum(iris$Species))
+print(my_sum(warpbreaks$breaks))
+
+```
+
+```{r}
+print(grouped_violin_plot(iris, "Sepal.Length", "Species"))
+```
+```{r}
+difference_in_medians(iris, "Sepal.Width", "Species", "versicolor", "virginica")
+difference_in_medians(iris, "Sepal.Width", "Species", "virginica", "virginica")
+
+```
+
