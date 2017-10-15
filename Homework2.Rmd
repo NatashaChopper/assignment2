@@ -1,0 +1,16 @@
+---
+title: "homework2"
+author: "Natalia Kalashnikova"
+date: "14 10 2017"
+output: html_document
+---
+
+```{r}
+source("functions.R")
+```
+```{r}
+print(sum_column(iris, "Sepal.Length"))
+print(sum_column(iris, "Species"))
+print(sum_column(warpbreaks, "breaks"))
+```
+
