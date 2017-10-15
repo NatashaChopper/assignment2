@@ -10,17 +10,17 @@
 sum_column <- function(d, var) {
   # Set a default value to return
   result <- NULL
-  x <- d[[var]] # Remember, as we showed in class: there are two ways
+  # Remember, as we showed in class: there are two ways
   # to access a column, and this is one; you should try
   # and figure out why the other way won't work here,
   # but that's not part of the homework
-  if (!is.null(x)) { # This tests to see whether the column exists in
+  if (is.numeric(d[[var]])) { # This tests to see whether the column exists in
     # d; again, you should try and find a way to test
     # this out for yourself to verify that it's true,
     # but that's not part of the homework
     # YOUR CODE HERE: if x contains numbers, set the variable
     # result to be the sum of the values in x
-  rowSums(x)
+    result <- sum(d[[var]])
     }
     return(result)
 }
@@ -39,14 +39,22 @@ sum_column <- function(d, var) {
 #
 # [YOUR FUNCTION HERE]
 my_sum <- function(x) {
+  result <- NULL
   if (is.numeric(x)) {
-    return(colSums(x))}
-  else 
-    { return(NULL) }
+    result <- (sum(x)) 
+    }
+return(result)
 }
 
-
-
+#x: a vector
+#k: a number
+sum_divided_by <- function(x, k) {
+  result <- NULL
+  if (is.numeric(x)&&(k)) {
+    result <- (sum(x)) / (k)
+    }
+   return(result)
+}
 
 
 
@@ -68,7 +76,7 @@ grouped_violin_plot <- function(d, var, grouping_var) {
   p <- ggplot2::ggplot(d, ggplot2::aes_string(y=var,
                                               x=grouping_var,
                                               fill=grouping_var)) 
-  p <- p + ggplot2::geom_violin(aes_string(y=var,
+  p <- p + ggplot2::geom_violin(ggplot2::aes_string(y=var,
                                            x=grouping_var,
                                            fill=grouping_var))
   return(p)

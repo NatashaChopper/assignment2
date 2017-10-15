@@ -14,11 +14,19 @@ print(sum_column(iris, "Species"))
 print(sum_column(warpbreaks, "breaks"))
 ```
 
+
 ```{r}
 print(my_sum(iris$Sepal.Length))
 print(my_sum(iris$Species))
 print(my_sum(warpbreaks$breaks))
 
+```
+
+```{r}
+print(sum_divided_by(iris$Sepal.Length, 12))
+print(sum_divided_by(iris$Species, 22))
+print(sum_divided_by(iris$Sepal.Length, "Not numeric"))
+print(sum_divided_by(warpbreaks$breaks, -12))
 ```
 
 ```{r}
