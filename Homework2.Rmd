@@ -30,11 +30,32 @@ print(sum_divided_by(warpbreaks$breaks, -12))
 ```
 
 ```{r}
+print(my_mean(iris$Sepal.Length))
+print(my_mean(iris$Species))
+print(my_mean(warpbreaks$breaks))
+```
+
+
+
+```{r}
 print(grouped_violin_plot(iris, "Sepal.Length", "Species"))
 ```
 ```{r}
 difference_in_medians(iris, "Sepal.Width", "Species", "versicolor", "virginica")
 difference_in_medians(iris, "Sepal.Width", "Species", "virginica", "virginica")
 
+```
+
+
+
+```{r}
+iris$Sepal.Width[1:10]
+if(!exists(".Random.seed")) set.seed(NULL)
+previous_seed <- .Random.seed
+set.seed(1)
+randomize(iris, "Sepal.Width")$Sepal.Width[1:10]
+randomize(iris, "Species")$Species[1:10]
+randomize(iris, "Species")$Sepal.Width[1:10]
+set.seed(previous_seed)
 ```
 
