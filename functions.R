@@ -107,7 +107,7 @@ grouped_violin_plot <- function(d, var, grouping_var) {
 difference_in_medians <- function(d, var, grouping_var, group1, group2) {
   d_1 <- dplyr::filter(d, get(grouping_var) == group1)
   d_2 <- dplyr::filter(d, get(grouping_var) == group2)
-  result <- median(d_1$var) - median(d_2$var)
+  result <- median(d_1[[var]]) - median(d_2[[var]])
   # YOUR CODE HERE: assign the difference in the medians to to the variable 'result'
   return(result)
 }
@@ -124,11 +124,9 @@ difference_in_medians <- function(d, var, grouping_var, group1, group2) {
 # var permuted randomly.
 #
 randomize <- function(d, var) {
-  d[[var]] <- randomize(d[[var]])
+  d[[var]] <- sample(d[[var]])
     return(d)
 }
-
-
 
 
 
