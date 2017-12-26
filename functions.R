@@ -1,3 +1,5 @@
+# EXERCICE 1a
+
 # Sum values in a column of a data frame.
 #
 # ARGUMENTS:
@@ -25,7 +27,7 @@ sum_column <- function(d, var) {
     return(result)
 }
 
-
+# EXERCICE 1b
 
 
 # Sum values in a vector.
@@ -46,6 +48,8 @@ my_sum <- function(x) {
 return(result)
 }
 
+# EXERCICE 1c
+
 #x: a vector
 #k: a number
 sum_divided_by <- function(x, k) {
@@ -56,6 +60,8 @@ sum_divided_by <- function(x, k) {
    return(result)
 }
 
+# EXERCICE 1d
+
 my_mean <- function(x) {
   result <- NULL
   if (is.numeric(x)) {
@@ -64,6 +70,7 @@ my_mean <- function(x) {
   return(result)
 }
 
+# EXERCICE 2a and 2b
 
 # Return a violin plot.
 #
@@ -91,6 +98,8 @@ grouped_violin_plot <- function(d, var, grouping_var) {
   return(p)
 }
 
+# EXERCICE 3a
+
 # Difference in the medians between two groups.
 #
 # ARGUMENTS:
@@ -111,6 +120,8 @@ difference_in_medians <- function(d, var, grouping_var, group1, group2) {
   # YOUR CODE HERE: assign the difference in the medians to to the variable 'result'
   return(result)
 }
+
+# EXERCICE 3b
 
 # Randomize the order of a column.
 #
@@ -160,12 +171,34 @@ permutation_twogroups <- function(d, var, grouping_var, group1, group2, statisti
   observed_statistic <- statistic(d, var, grouping_var, group1, group2)
   permutation_statistics <- rep(0, n_samples)
   for (i in 1:n_samples) {
+    permutation <- randomize(d[var])
     # YOUR CODE HERE: use randomize(...) to create a permutation and then
     # fill in the vector permutation_statistics with the
     # value of statistic(...) for this new permutation
+    permutation_statistics[i] <- statistic(permutation, var, grouping_var, group1, group2)
   }
   result <- list(observed=observed_statistic,
                  permuted=permutation_statistics)
   return(result)
 }
 
+
+
+for (i in 1:n_samples) {
+  d_perm <- randomize(d, var)
+  permutation_statistics[i] <- statistic(d_perm, var, grouping_var, group1, group2)
+}
+result <- list(observed=observed_statistic,
+               permuted=permutation_statistics)
+return(result)
+}
+
+
+
+# EXERCICE 3f
+new_test_statistic <- function(d, var, grouping_var, group1, group2) {
+  d_1 <- dplyr::filter(d, get(grouping_var) == group1)
+  d_2 <- dplyr::filter(d, get(grouping_var) == group2)
+  result <- mean(d_1[[var]]) - mean(d_2[[var]])
+  return(result)
+}
